@@ -22,7 +22,7 @@ const cont=document.getElementsByClassName("container");
 const sbt=document.querySelector("#submit");
 const optioninp=document.querySelectorAll("input");
 // console.log(optioninp);
-
+loadQuestion();
 sbt.addEventListener("click",()=>{
     
     const data=arr[index];
@@ -77,4 +77,4 @@ function loadQuestion()
     cont[0].children[3].children[1].innerText=arr[index].op3
     cont[0].children[4].children[1].innerText=arr[index].op4
 }
-loadQuestion();
+
