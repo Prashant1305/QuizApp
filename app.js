@@ -7,29 +7,68 @@ class question{
         this.op3=op3;
         this.op4=op4;
         this.ans=ans;
-        this.value;
-    }
-    corect(){
-        return this.ans==this.value;
     }
 }
 
-
-let q1=new question("Which of the following is a client site language?","Java","C","Python","JavaScript","JavaScript");
-let q2=new question("What does HTML stand for?","Hypertext Markup Language","Cascading Style Sheet","Jason Object Notation","Helicopters Terminals Motorboats Lamborginis","Hypertext Markup Language");
-let q3=new question("What year was JavaScript launched?","1996","1995","1994","none of the above","1995");
-let q4=new question("What does CSS stands for?","Hypertext Markup Language","Cascading Style Sheet","Jason Object Notation","Helicopters Terminals Motorboats Lamborginis","Cascading Style Sheet");
+let index=0;
+let q1=new question("Which of the following is a client site language?","Java","C","Python","JavaScript","d");
+let q2=new question("What does HTML stand for?","Hypertext Markup Language","Cascading Style Sheet","Jason Object Notation","Helicopters Terminals Motorboats Lamborginis","a");
+let q3=new question("What year was JavaScript launched?","1996","1995","1994","none of the above","b");
+let q4=new question("What does CSS stands for?","Hypertext Markup Language","Cascading Style Sheet","Jason Object Notation","Helicopters Terminals Motorboats Lamborginis","b");
 let arr=[q1,q2,q3,q4];
 let marks=0;
-const cont=document.getElementsByClassName("container");
- 
-console.log(cont);
 
-function myfunc()
+const cont=document.getElementsByClassName("container");
+const sbt=document.querySelector("#submit");
+const optioninp=document.querySelectorAll("input");
+// console.log(optioninp);
+
+sbt.addEventListener("click",()=>{
+    
+    const data=arr[index];
+    // console.log(`submit was clicked ${index}`);
+
+    let userAns=getAnswere();
+    console.log(userAns);
+    if(arr[index].ans==userAns)
+    {
+        marks++;
+    }
+    console.log(marks);
+    
+    index++;
+    if(index>=arr.length)
+    {
+        return quizResult();
+    }
+    loadQuestion();
+})
+
+function quizResult()
 {
-    console.log("i was called");
+    const temp=document.getElementsByClassName("container");
+    console.log(temp);
+    return temp[0].innerHTML=`
+    <div class="col">
+        <h3 > Hii, you've scored ${marks} / ${arr.length} </h3>
+    </div>`
 }
-let index=0;
+
+function getAnswere(){
+    let ans;
+    for(let its of optioninp)
+    {
+        // console.log(its);
+        if(its.checked)
+        {
+            // console.log("yes");
+            ans=its.value;
+        }
+    }
+    return ans;
+}
+
+
 function loadQuestion()
 {
     cont[0].children[0].children[0].innerText=arr[index].q;
@@ -38,7 +77,4 @@ function loadQuestion()
     cont[0].children[3].children[1].innerText=arr[index].op3
     cont[0].children[4].children[1].innerText=arr[index].op4
 }
-
-
-
-    // console.log();
+loadQuestion();
