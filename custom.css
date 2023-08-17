@@ -33,7 +33,7 @@ body {
 }
 
 .box:hover {
-    box-shadow: 6px 6px 10px rgba(19, 18, 18, 50%);
+    box-shadow: 6px 6px 10px rgba(235, 221, 221, 0.781);
 }
 
 button:hover {
